@@ -3,7 +3,11 @@ var currentDayEl = $('#currentDay');
 var saveButtonEl = $('.saveBtn'); 
 
 var currentTime = moment().format('H');
-console.log(currentTime);
+
+
+
+// console.log(saveContentEl)
+
 
 
 
@@ -18,7 +22,7 @@ hourFifteen = 15;
 hourSixteen = 16;
 hourSeventeen = 17;  
 
-// console.log(hourNine);
+
 
 function displayTime() {
 	var rightNow = moment().format('dddd') + ", " + moment().format('MMM Do YYYY');
@@ -149,3 +153,16 @@ function evaluateTime() {
 
 }
 evaluateTime();
+
+saveButtonEl.on('click', function() {
+	if (localStorage == null) {
+	var saveInput = document.querySelector('.saveContent').value;
+	localStorage.setItem('task', saveInput);
+
+	document.querySelector('.saveContent').value = localStorage.getItem('task');
+
+	}
+
+
+});
+

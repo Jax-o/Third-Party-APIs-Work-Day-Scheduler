@@ -1,15 +1,10 @@
+// declare variables
+
 var currentDayEl = $('#currentDay');
 
 var saveButtonEl = $('.saveBtn'); 
 
 var currentTime = moment().format('H');
-
-
-
-// console.log(saveContentEl)
-
-
-
 
 
 hourNine = 9;
@@ -22,7 +17,7 @@ hourFifteen = 15;
 hourSixteen = 16;
 hourSeventeen = 17;  
 
-
+// function for current day and date
 
 function displayTime() {
 	var rightNow = moment().format('dddd') + ", " + moment().format('MMM Do YYYY');
@@ -30,6 +25,8 @@ function displayTime() {
 
 }
 displayTime();
+
+// function to evaluate time to current time
 
 function evaluateTime() {
 	// Nine AM
@@ -154,15 +151,24 @@ function evaluateTime() {
 }
 evaluateTime();
 
+// function for saving to local storage and will display even after refresh
+
+
 saveButtonEl.on('click', function() {
-	if (localStorage == null) {
-	var saveInput = document.querySelector('.saveContent').value;
-	localStorage.setItem('task', saveInput);
 
-	document.querySelector('.saveContent').value = localStorage.getItem('task');
-
-	}
-
-
-});
+	var saveInput = $(this).siblings('.saveContent').val();
+	var textAreaId = $(this).siblings('.saveContent').attr("id")
+	
+	localStorage.setItem(textAreaId, saveInput);	
+	
+})
+$("#nine").val(localStorage.getItem('nine'));
+$("#ten").val(localStorage.getItem('ten'));
+$("#eleven").val(localStorage.getItem('eleven'));
+$("#twelve").val(localStorage.getItem('twelve'));
+$("#thirteen").val(localStorage.getItem('thirteen'));
+$("#fourteen").val(localStorage.getItem('fourteen'));
+$("#fifteen").val(localStorage.getItem('fifteen'));
+$("#sixteen").val(localStorage.getItem('sixteen'));
+$("#seventeen").val(localStorage.getItem('seventeen'));
 
